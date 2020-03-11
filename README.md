@@ -46,7 +46,7 @@
 	}
 
 	/**
-	 * 每个排行榜的排行依据不同，根据情况实现
+	 * 判断排名的依据，每个排行榜的排行依据不同，根据情况实现
 	 */
 	@Override
 	protected boolean gt(TestRankObject rankObject1, TestRankObject rankObject2) {
