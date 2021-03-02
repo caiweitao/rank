@@ -23,7 +23,7 @@ public class TestRank extends AbstractRank<Integer,TestRankObject> {
 	 * 初始化排行榜数据，一般在程序启动时，查询数据库得到数据
 	 */
 	@Override
-	protected List<TestRankObject> getInitData() {
+	protected List<TestRankObject> getInitData(int max) {
 		List<TestRankObject> list = new ArrayList<TestRankObject>();
 
 		for (int i=1000;i>0;i-=2) {

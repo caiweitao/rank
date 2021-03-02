@@ -36,7 +36,7 @@ public abstract class AbstractRank<K,RankObject> {
 	}
 	
 	public AbstractRank() {
-		this(500, 100);
+		this(200, 100);
 	}
 	
 	/**
@@ -45,7 +45,7 @@ public abstract class AbstractRank<K,RankObject> {
 	public void init () {
 		try {
 			writeLock.lock();
-			rankList = getInitData();
+			rankList = getInitData(max);
 			if (rankList.size() > max) {
 				rankList = rankList.subList(0, max);
 			}
@@ -122,9 +122,10 @@ public abstract class AbstractRank<K,RankObject> {
 	 * @return 返回-1代表没位置插入
 	 */
 	private int binarySearchPosition (RankObject rankObject) {
-		if (rankObject == null) {
+		if (rankObject == null) 
 			return -1;
-		}
+		if (rankList.size() == 0) 
+			return 0;
 		int low = 0;//列表头部，对应位置存放第一名对象
 		int high = rankList.size() - 1;//列表尾部，对应位置存放最后一名对象
 		
@@ -224,9 +225,10 @@ public abstract class AbstractRank<K,RankObject> {
 	
 	/**
 	 * 获得排行榜初始数据
+	 * @param max 最大数量
 	 * @return
 	 */
-	protected abstract List<RankObject> getInitData ();
+	protected abstract List<RankObject> getInitData (int max);
 	
 	/**
 	 * 排行榜中每个对象的唯一标示，用于识别对象
